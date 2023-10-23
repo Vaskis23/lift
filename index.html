@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lift</title>
+    <style>
+        #building, #user {
+            border: 2px solid black;
+            height: 900px;
+            width: 100px;
+            float: left;
+        }
+        #user button {
+            width: 100px;
+            height: 100px;
+        }
+        #lift {
+           width: 100px;
+           height: 100px;
+           background: #345;
+           transition: 2s;
+        }
+    </style>
+</head>
+<body>
+    <div id="building">
+        <div id="lift" style="transform: translateY(0px);"></div>
+    </div>
+    <div id="user">
+        <button onclick="floor=8; moveLift()">8</button>
+        <button onclick="floor=7; moveLift()">7</button>
+        <button onclick="floor=6; moveLift()">6</button>
+        <button onclick="floor=5; moveLift()">5</button>
+        <button onclick="floor=4; moveLift()">4</button>
+        <button onclick="floor=3; moveLift()">3</button>
+        <button onclick="floor=2; moveLift()">2</button>
+        <button onclick="floor=1; moveLift()">1</button>
+        <button onclick="floor=0; moveLift()">0</button>
+    </div>
+    <div>
+        <button onclick="floorUp()">⬆</button>
+        <button onclick="floorDown()">⬇</button>
+    </div>
+    <script>
+        let floor = 0
+        function moveLift() {
+            let y = 800 - floor * 100
+            lift.style= `transform: translateY(${y}px);`
+        }
+        moveLift()
+//add two more buttons on top and bottom: ⬆ ⬇
+//and add the next functionality:
+//1.update the floor number
+//2.update the #lift styles
+        function floorUp() {
+            if (floor < 8) {
+                floor++;
+                moveLift();
+            }
+        }
+
+        function floorDown() {
+            if (floor > 0) {
+                floor--;
+                moveLift();
+            }
+        }
+    </script>
+</body>
+</html>
